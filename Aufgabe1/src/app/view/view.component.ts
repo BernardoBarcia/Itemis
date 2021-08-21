@@ -1,4 +1,3 @@
-import { createDirectiveTypeParams } from '@angular/compiler/src/render3/view/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Good } from '../model/good';
 import { GoodsManagerService } from '../service/goods-manager.service';
@@ -40,11 +39,11 @@ export class ViewComponent implements OnInit {
     });
     receipt?.insertAdjacentHTML(
       'beforeend',
-      `<p>Sales Tax: ${this.goodsService.getTotalTax()}</p>`
+      `<p style="bold">Sales Tax: ${this.goodsService.getTotalTax()}</p>`
     );
     receipt?.insertAdjacentHTML(
       'beforeend',
-      `<p>Total: ${this.goodsService.getTotalPrice()}</p>`
+      `<p style="bold">Total: ${this.goodsService.getTotalPrice()}</p>`
     );
   }
 
@@ -52,14 +51,13 @@ export class ViewComponent implements OnInit {
     let val = good.amount + amount;
     if (val <= 0) {
       val = 0;
-      this.goodsService.goods.splice(this.goodsService.goods.indexOf(good));
-    } else if (!this.goodsService.goods.some((elem) => elem === good))
-      this.goodsService.goods.push(good);
+      this.goodsService.removeGood(good);
+    } else this.goodsService.addGood(good);
     good.amount = val;
   }
 
   buyItems() {
-    window.alert(`You bought ${this.goodsService.goods.length} items`);
+    window.alert(`You bought ${this.goodsService.getNumberOfGoods()} items`);
   }
 
   private createItems() {

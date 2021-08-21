@@ -12,7 +12,7 @@ export class GoodsManagerService {
   private totalPrice: number = 0;
 
   // constructor() {
-  constructor(@Optional() @Inject(Good) goodsList: Good[]) {
+  constructor(@Optional() @Inject(Good) goodsList: Good[] = []) {
     if (goodsList) this.goods = goodsList;
   }
 
@@ -43,5 +43,17 @@ export class GoodsManagerService {
   calculateReceipt() {
     this.calculateTotalTax();
     this.calculateTotalPrice();
+  }
+
+  getNumberOfGoods(): number {
+    return this.goods.reduce((val, good) => val + good.amount, 0);
+  }
+
+  removeGood(good: Good) {
+    this.goods.splice(this.goods.indexOf(good));
+  }
+  //Avoid redundancies, compare by ID, which should be unique to every product
+  addGood(good: Good) {
+    if (!this.goods.some((elem) => elem.id === good.id)) this.goods.push(good);
   }
 }

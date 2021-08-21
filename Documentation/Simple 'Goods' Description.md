@@ -1,6 +1,6 @@
 # Goods Object Properties
 
-- id : number
+- id : number (Unique to every product)
 - shelf price : number (float number, ex. 12.99 $)
 - basic tax : number (static)
 - import tax : number (static)

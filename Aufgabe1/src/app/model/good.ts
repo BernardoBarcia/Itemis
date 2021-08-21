@@ -39,12 +39,19 @@ export class Good {
 
   getSalesTaxCalculated(): number {
     // Round to the nearest 0.05
-    return (Math.ceil((this.getSalesTax() * this.shelfPrice) / 5) * 5) / 100;
+    return (
+      (Math.ceil((this.getSalesTax() * this.shelfPrice) / 5) *
+        5 *
+        this.amount) /
+      100
+    );
   }
 
   getTotalPrice(): number {
     return (
-      Math.round((this.shelfPrice + this.getSalesTaxCalculated()) * 100) / 100
+      Math.round(
+        (this.shelfPrice * this.amount + this.getSalesTaxCalculated()) * 100
+      ) / 100
     );
   }
 }
