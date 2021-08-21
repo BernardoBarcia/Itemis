@@ -1,3 +1,4 @@
+import { Inject } from '@angular/core';
 import { Injectable, Optional } from '@angular/core';
 import { Good } from '../model/good';
 
@@ -5,14 +6,14 @@ import { Good } from '../model/good';
   providedIn: 'root',
 })
 export class GoodsManagerService {
-  goods: Good[];
+  goods: Good[] = [];
   // Calculated Values
   private salesTax: number = 0;
   private totalPrice: number = 0;
 
   // constructor() {
-  constructor(@Optional() goodsList: Good[] = []) {
-    this.goods = goodsList;
+  constructor(@Optional() @Inject(Good) goodsList: Good[]) {
+    if (goodsList) this.goods = goodsList;
   }
 
   getTotalTax(): number {

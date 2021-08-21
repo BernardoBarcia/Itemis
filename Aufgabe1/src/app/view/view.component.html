@@ -1,0 +1,136 @@
+<div class="container-fluid">
+  <div class="row p-2">
+    <div class="col goods-list p-2 m-1 rounded-2">
+      <!-- Product List -->
+      <!-- Code Snippet from: 
+        https://bbbootstrap.com/snippets/product-list-65909871
+        -->
+      <div class="container py-5">
+        <div class="row text-center text-white mb-5">
+          <div class="col-lg-7 mx-auto">
+            <h1 class="display-4">Product List</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <!-- List group-->
+            <ul class="list-group shadow">
+              <!-- list group item-->
+              <li *ngFor="let good of goodList" class="list-group-item">
+                <!-- Custom content-->
+                <div
+                  class="
+                    media
+                    align-items-lg-center
+                    flex-column flex-lg-row
+                    p-3
+                  "
+                >
+                  <img
+                    src="http://cdn.onlinewebfonts.com/svg/img_231353.svg"
+                    alt="Generic placeholder image"
+                    width="100"
+                    class="ml-lg-5 order-1 order-lg-2"
+                  />
+                  <div class="media-body order-2 order-lg-1">
+                    <h5 class="mt-0 font-weight-bold mb-2">
+                      {{ good.productName }}
+                      {{ good.isImported ? " (Imported)" : "" }}
+                    </h5>
+                    <p class="font-italic text-muted mb-0 small">Description</p>
+                    <div
+                      class="
+                        d-flex
+                        align-items-center
+                        justify-content-between
+                        mt-1
+                      "
+                    >
+                      <h6 class="font-weight-bold my-2">
+                        $ {{ good.shelfPrice }}
+                        <div class="btn-group px-2" role="group">
+                          <button
+                            class="btn btn-sm btn-primary"
+                            type="button"
+                            (click)="changeAmount(good, -1)"
+                          >
+                            -
+                          </button>
+                          <div
+                            class="p-2 bg-blue"
+                            style="background-color: lightgray"
+                          >
+                            {{ good.amount }}
+                          </div>
+                          <button
+                            class="btn btn-sm btn-primary"
+                            type="button"
+                            (click)="changeAmount(good, 1)"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </h6>
+                      <ul class="list-inline small">
+                        <li class="list-inline-item m-0">
+                          <i class="fa fa-star text-success"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fa fa-star text-success"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fa fa-star text-success"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fa fa-star text-success"></i>
+                        </li>
+                        <li class="list-inline-item m-0">
+                          <i class="fa fa-star-o text-gray"></i>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-- End -->
+              </li>
+              <!-- End -->
+            </ul>
+            <!-- End -->
+          </div>
+        </div>
+      </div>
+      <!-- End -->
+    </div>
+    <div class="col-3 receipt-info m-1 p-2 rounded-2 bg-info sticky-right size">
+      <div class="sticky-top">
+        <div class="row receipt-button py-3">
+          <div type="col">
+            <button
+              class="btn-primary btn-dark btn"
+              type="col button"
+              (click)="generateReceipt()"
+            >
+              Generate Receipt
+            </button>
+          </div>
+        </div>
+        <div class="calculatedReceipt invisible">
+          <div class="row p-1 d-flex">
+            <div class="col bg-light m-2 p-2 receipt"></div>
+          </div>
+          <div class="row buy py-3 d-flex">
+            <div class="col">
+              <button
+                class="btn-primary btn-success btn"
+                type="submit"
+                (click)="buyItems()"
+              >
+                Buy items
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

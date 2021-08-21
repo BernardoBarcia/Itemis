@@ -21,7 +21,7 @@ export class Good {
     this.shelfPrice = shelfPrice;
     this.productType = productType;
     this.isImported = isImported || this.isImported;
-    this.amount = amount || this.amount;
+    if (amount !== undefined) this.amount = amount;
     this.productName = productName || this.productName;
   }
 

@@ -1,0 +1,13 @@
+.goods-list {
+  background: linear-gradient(to right, #c04848, #480048);
+  min-height: 100vh;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+img {
+  height: 90px;
+  width: 60px;
+}
