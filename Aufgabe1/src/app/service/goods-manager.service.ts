@@ -1,28 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { Good } from '../model/good';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GoodsManagerService {
-  private goods: Good[];
+  goods: Good[];
   // Calculated Values
   private salesTax: number = 0;
   private totalPrice: number = 0;
 
-  constructor(goodsList: Good[] = []) {
+  // constructor() {
+  constructor(@Optional() goodsList: Good[] = []) {
     this.goods = goodsList;
   }
 
-  getTotalTax() {
-    return this.salesTax;
+  getTotalTax(): number {
+    return Math.round(this.salesTax * 100) / 100;
   }
 
-  getTotalPrice() {
-    return this.totalPrice;
+  getTotalPrice(): number {
+    return Math.round(this.totalPrice * 100) / 100;
   }
 
-  calculateTotalTax() {
+  calculateTotalTax(): number {
     this.salesTax = 0;
     this.goods.forEach((good) => {
       this.salesTax += good.getSalesTaxCalculated();
@@ -30,7 +31,7 @@ export class GoodsManagerService {
     return this.salesTax;
   }
 
-  calculateTotalPrice() {
+  calculateTotalPrice(): number {
     this.totalPrice = 0;
     this.goods.forEach((good) => {
       this.totalPrice += good.getTotalPrice();

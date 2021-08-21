@@ -1,10 +1,11 @@
 # Goods Object Properties
 
 - id : number
-- shelf price : number
+- shelf price : number (float number, ex. 12.99 $)
 - basic tax : number (static)
 - import tax : number (static)
 - product type : string (helps determine if basic tay applies)
+- product name : string (Name of the product, can be left blank since products are identified by id first and foremost)
 - isImported: boolean
 
 ## Currently defined values
