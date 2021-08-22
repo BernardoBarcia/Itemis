@@ -34,7 +34,9 @@ export class ViewComponent implements OnInit {
     this.goodsService.goods.forEach((good) => {
       receipt?.insertAdjacentHTML(
         'beforeend',
-        `<p>${good.amount} ${good.productName}: $ ${good.getTotalPrice()}</p>`
+        `<p>${good.amount} ${good.productName} ${
+          good.isImported ? '(imported)' : ''
+        }: $ ${good.getTotalPrice()}</p>`
       );
     });
     receipt?.insertAdjacentHTML(
@@ -62,17 +64,36 @@ export class ViewComponent implements OnInit {
 
   private getGoods() {
     //
-    this.goodList.push(new Good(1, 9.99, 'book', false, 0, 'Book of the Wind'));
-    this.goodList.push(new Good(2, 0.99, 'food', false, 0, 'Chocolate Bar'));
     this.goodList.push(
-      new Good(3, 4.99, 'medical product', false, 0, 'Box of Aspirin')
-    );
-    this.goodList.push(new Good(4, 3, 'clothes', false, 0, 'White Shirt'));
-    this.goodList.push(
-      new Good(5, 15.49, 'cosmetics', false, 0, 'Bottle of perfume')
+      new Good(1, 12.49, 'book', false, 0, 'Book of the Wind')
     );
     this.goodList.push(
-      new Good(6, 27.99, 'cosmetics', true, 0, 'Bottle of perfume')
+      new Good(
+        2,
+        14.99,
+        'music cd',
+        false,
+        0,
+        'Top Hits of The Onesiders (Music CD)'
+      )
     );
+    this.goodList.push(new Good(3, 0.85, 'food', false, 0, 'Chocolate Bar'));
+    this.goodList.push(new Good(4, 10.0, 'food', true, 0, 'Box of Chocolates'));
+    this.goodList.push(
+      new Good(5, 47.5, 'perfume', true, 0, 'Bottle of perfume (Channel)')
+    );
+    this.goodList.push(
+      new Good(6, 27.99, 'perfume', true, 0, 'Bottle of perfume (DiGiorno)')
+    );
+    this.goodList.push(
+      new Good(7, 18.99, 'perfume', false, 0, 'Bottle of perfume (Mueller)')
+    );
+    this.goodList.push(
+      new Good(8, 9.75, 'medical product', false, 0, 'Headache pills')
+    );
+    this.goodList.push(
+      new Good(9, 11.25, 'food', true, 0, 'Box of Chocolates')
+    );
+    this.goodList.push(new Good(10, 3.0, 'clothes', false, 0, 'White Shirt'));
   }
 }
