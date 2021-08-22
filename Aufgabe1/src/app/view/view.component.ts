@@ -15,7 +15,7 @@ export class ViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createItems();
+    this.getGoods();
   }
 
   generateReceipt() {
@@ -60,7 +60,8 @@ export class ViewComponent implements OnInit {
     window.alert(`You bought ${this.goodsService.getNumberOfGoods()} items`);
   }
 
-  private createItems() {
+  private getGoods() {
+    //
     this.goodList.push(new Good(1, 9.99, 'book', false, 0, 'Book of the Wind'));
     this.goodList.push(new Good(2, 0.99, 'food', false, 0, 'Chocolate Bar'));
     this.goodList.push(
