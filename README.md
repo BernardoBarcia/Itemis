@@ -1,5 +1,5 @@
 # Itemis Aufgabe 1
-Problem 1 implemented in Angular. 
+Problem 1 implemented in Angular with english documentation (as the problem was posed in English). 
 
 This project is divided in three directories: model, service and view. 
 The Model describes the objects to be managed in this application. In this case the goods. 
