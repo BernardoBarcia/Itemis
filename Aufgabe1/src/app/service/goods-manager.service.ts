@@ -50,7 +50,7 @@ export class GoodsManagerService {
   }
 
   removeGood(good: Good) {
-    this.goods.splice(this.goods.indexOf(good));
+    this.goods.splice(this.goods.indexOf(good), 1);
   }
   //Avoid redundancies, compare by ID, which should be unique to every product
   addGood(good: Good) {
